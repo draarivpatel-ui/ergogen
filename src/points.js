@@ -4,7 +4,7 @@ const a = require('./assert')
 const prep = require('./prepare')
 const anchor_lib = require('./anchor')
 
-const push_rotation = exports._push_rotation = (list, angle, origin) => {
+const push_rotation = (list, angle, origin) => {
     let candidate = origin
     for (const r of list) {
         candidate = m.point.rotate(candidate, r.angle, r.origin)
@@ -15,7 +15,7 @@ const push_rotation = exports._push_rotation = (list, angle, origin) => {
     })
 }
 
-const render_zone = exports._render_zone = (zone_name, zone, anchor, global_key, units) => {
+const render_zone = (zone_name, zone, anchor, global_key, units) => {
 
     // zone-wide sanitization
 
@@ -192,7 +192,7 @@ const render_zone = exports._render_zone = (zone_name, zone, anchor, global_key,
     return points
 }
 
-const parse_axis = exports._parse_axis = (config, name, points, units) => {
+const parse_axis = (config, name, points, units) => {
     if (!['number', 'undefined'].includes(a.type(config)(units))) {
         const mirror_obj = a.sane(config, name, 'object')()
         const distance = a.sane(mirror_obj.distance || 0, `${name}.distance`, 'number')(units)
@@ -203,7 +203,7 @@ const parse_axis = exports._parse_axis = (config, name, points, units) => {
     } else return config
 }
 
-const perform_mirror = exports._perform_mirror = (point, axis, units) => {
+const perform_mirror = (point, axis, units) => {
     point.meta.mirrored = false
     if (point.meta.asym == 'source') return ['', null]
     const mp = point.clone().mirror(axis)
@@ -228,7 +228,7 @@ const perform_mirror = exports._perform_mirror = (point, axis, units) => {
     return [mirrored_name, mp]
 }
 
-const perform_autobind = exports._perform_autobind = (points, units) => {
+const perform_autobind = (points, units) => {
 
     const bounds = {}
     const col_lists = {}

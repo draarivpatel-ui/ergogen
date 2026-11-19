@@ -36,7 +36,7 @@ const net_obj = (name, index) => {
     }
 }
 
-const footprint = exports._footprint = (points, net_indexer, component_indexer, units, extra) => (config, name, point) => {
+const footprint = (points, net_indexer, component_indexer, units, extra) => (config, name, point) => {
 
     // config sanitization
     a.unexpected(config, name, ['what', 'params'])

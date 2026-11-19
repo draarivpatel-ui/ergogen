@@ -1,7 +1,7 @@
 const u = require('./utils')
 const a = require('./assert')
 
-const _extend = exports._extend = (to, from) => {
+const _extend = (to, from) => {
     const to_type = a.type(to)()
     const from_type = a.type(from)()
     if (from === undefined || from === null) return to
